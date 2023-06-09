@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+
+defineLocale ('pt-br', ptBrLocale); // Sem essa definição o Calendário não Carrega
 
 @Component({
   selector: 'app-root',
@@ -6,5 +11,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-com-bootstrap';
+
+  // Mudar Idioma do Calendário
+  constructor(private localeService: BsLocaleService) {
+    this.localeService.use('pt-br');
+  }
 }
